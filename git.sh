@@ -24,6 +24,7 @@ git config --global credential.helper store
 git config --global alias.c "commit -s"
 git config --global alias.cam "commit --am"
 git config --global alias.cm "commit"
+git config --global alias.csm "commit -s -m"
 git config --global alias.ca "cherry-pick --abort"
 git config --global alias.cr "cherry-pick --signoff"
 git config --global alias.p "push -f"
@@ -36,11 +37,14 @@ git config --global alias.ro "remote rm origin"
 git config --global alias.ra "remote add origin"
 git config --global alias.s "switch -c"
 git config --global alias.b "branch"
+git config --global alias.rh "reset --hard"
 
 ##----------------------------------------------------------##
 # Setup Change-id hooks
-mkdir -p "$HOME"/.git-templates/hooks
-git config --global init.templatedir "$HOME"/.git-templates
-curl -Lo "$HOME"/.git-templates/hooks/commit-msg https://raw.githubusercontent.com/Hoppless/Scripts/main/commit-msg
-chmod u+x "$HOME"/.git-templates/hooks/commit-msg
+if [[ "$1" == "change-id" ]]; then
+	mkdir -p "$HOME"/.git-templates/hooks
+	git config --global init.templatedir "$HOME"/.git-templates
+	curl -Lo "$HOME"/.git-templates/hooks/commit-msg https://raw.githubusercontent.com/Hoppless/Scripts/main/commit-msg
+	chmod u+x "$HOME"/.git-templates/hooks/commit-msg
+fi
 msg "Git configiration succesfully"
