@@ -41,10 +41,9 @@ git config --global alias.rh "reset --hard"
 
 ##----------------------------------------------------------##
 # Setup Change-id hooks
-if [[ "$1" == "change-id" ]]; then
-	mkdir -p "$HOME"/.git-templates/hooks
-	git config --global init.templatedir "$HOME"/.git-templates
-	curl -Lo "$HOME"/.git-templates/hooks/commit-msg https://raw.githubusercontent.com/Hoppless/Scripts/main/commit-msg
-	chmod u+x "$HOME"/.git-templates/hooks/commit-msg
-fi
+mkdir -p ~/.git/hooks
+git config --global core.hooksPath ~/.git/hooks
+curl -Lo ~/.git/hooks/commit-msg http://review.lineageos.org/tools/hooks/commit-msg
+chmod a+x ~/.git/hooks/commit-msg
+clear && clear
 msg "Git configiration succesfully"
