@@ -20,11 +20,11 @@ echo -e "Installing and updating APT packages...\n"
 sudo apt update -qq
 sudo apt full-upgrade -y -qq
 sudo apt install -y -qq git-core gnupg flex bc bison build-essential zip curl zlib1g-dev gcc-multilib \
-                        g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev jq \
-                        lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig imagemagick \
-                        python2 python3 python3-pip python3-dev python-is-python3 schedtool ccache libtinfo5 \
-                        libncurses5 lzop tmux libssl-dev neofetch patchelf apktool dos2unix git-lfs default-jdk \
-                        libxml-simple-perl ripgrep
+	g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev jq \
+	lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig imagemagick \
+	python2 python3 python3-pip python3-dev python-is-python3 schedtool ccache libtinfo5 \
+	libncurses5 lzop tmux libssl-dev neofetch patchelf apktool dos2unix git-lfs default-jdk \
+	libxml-simple-perl ripgrep
 sudo apt autoremove -y -qq
 sudo apt purge snapd -y -qq
 echo -e "\nDone."
@@ -52,22 +52,22 @@ echo -e "Done."
 echo -e "\nInstalling apktool and JADX..."
 mkdir -p bin
 wget -q https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.6.0.jar -O bin/apktool.jar
-echo 'alias apktool="java -jar $HOME/bin/apktool.jar"' >> .bashrc
+echo 'alias apktool="java -jar $HOME/bin/apktool.jar"' >>.bashrc
 
 wget -q https://github.com/skylot/jadx/releases/download/v1.4.4/jadx-1.4.4.zip
 unzip -qq jadx-1.4.4.zip -d jadx
 rm jadx-1.4.4.zip
-echo 'export PATH="$HOME/jadx/bin:$PATH"' >> .bashrc
+echo 'export PATH="$HOME/jadx/bin:$PATH"' >>.bashrc
 echo -e "Done."
 
 echo -e "\nSetting up shell environment..."
 if [[ $SHELL = *zsh* ]]; then
-sh_rc=".zshrc"
+	sh_rc=".zshrc"
 else
-sh_rc=".bashrc"
+	sh_rc=".bashrc"
 fi
 
-cat <<'EOF' >> $sh_rc
+cat <<'EOF' >>$sh_rc
 
 # Super-fast repo sync
 repofastsync() { time schedtool -B -e ionice -n 0 `which repo` sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --retry-fetches=5 -j$(nproc --all) "$@"; }
@@ -172,7 +172,7 @@ function updatetree() {
 EOF
 
 # Add android sdk to path
-cat <<'EOF' >> .profile
+cat <<'EOF' >>.profile
 
 # Add Android SDK platform tools to path
 if [ -d "$HOME/platform-tools" ] ; then
@@ -187,7 +187,7 @@ sed -i 's/HISTFILESIZE=.*/HISTFILESIZE=-1/g' $sh_rc
 echo -e "Done."
 
 # Increase tmux scrollback buffer size
-echo "set-option -g history-limit 6000" >> .tmux.conf
+echo "set-option -g history-limit 6000" >>.tmux.conf
 
 # Increase maximum ccache size
 ccache -M 100G
