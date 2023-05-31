@@ -42,13 +42,6 @@ unzip -qq platform-tools-latest-linux.zip
 rm platform-tools-latest-linux.zip
 echo -e "Done."
 
-echo -e "\nInstalling Google Drive CLI..."
-wget -q https://raw.githubusercontent.com/usmanmughalji/gdriveupload/master/gdrive
-chmod a+x gdrive
-sudo install gdrive /usr/local/bin/gdrive
-rm gdrive
-echo -e "Done."
-
 echo -e "\nInstalling apktool and JADX..."
 mkdir -p bin
 wget -q https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.6.0.jar -O bin/apktool.jar
@@ -103,10 +96,6 @@ echo "set-option -g history-limit 6000" >>.tmux.conf
 
 # Increase maximum ccache size
 ccache -M 100G
-
-# Setup go-pd
-wget https://github.com/ManuelReschke/go-pd/releases/download/v1.3.0/go-pd_1.3.0_linux_386.tar.gz
-tar -xvf go-pd_1.3.0_linux_386.tar.gz
 
 # Done!
 echo -e "\nALL DONE. Now sync sauces & start baking!"
