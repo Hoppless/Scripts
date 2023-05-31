@@ -38,6 +38,9 @@ git config --global alias.ra "remote add origin"
 git config --global alias.s "switch -c"
 git config --global alias.b "branch"
 git config --global alias.rh "reset --hard"
+git config --global alias.ch "checkout"
+git config --global alias.f "fetch"
+git config --global alias.m "merge"
 
 ##----------------------------------------------------------##
 # Setup Change-id hooks
