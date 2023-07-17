@@ -10,17 +10,15 @@ msg() {
 	echo
 }
 
-msg "Starting configurate git"
+msg "[#] Starting configurate git"
 
 ##----------------------------------------------------------##
-# Git Identity
+# Core editor
 git config --global core.editor "nano"
-git config --global user.name "Hoppless"
-git config --global user.email "hoppless@proton.me"
-git config --global credential.helper store
 
 ##----------------------------------------------------------##
 # Git Alias
+msg "[#] Configurate alias config"
 git config --global alias.c "commit -s"
 git config --global alias.cam "commit --am"
 git config --global alias.cm "commit"
@@ -44,9 +42,10 @@ git config --global alias.m "merge"
 
 ##----------------------------------------------------------##
 # Setup Change-id hooks
+msg "[#] Setup Change-id hooks"
 mkdir -p ~/.git/hooks
 git config --global core.hooksPath ~/.git/hooks
 curl -Lo ~/.git/hooks/commit-msg http://review.lineageos.org/tools/hooks/commit-msg
 chmod a+x ~/.git/hooks/commit-msg
 clear && clear
-msg "Git configiration succesfully"
+msg "[✔️] Git configiration succesfully"
